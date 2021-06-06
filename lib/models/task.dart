@@ -44,7 +44,7 @@ class Task {
     return '${this._wrapInZero(this.date.hour)}:${this._wrapInZero(this.date.minute)}';
   }
 
-  String _wrapInZero(int toWrap){
+  String _wrapInZero(int toWrap) {
     return toWrap < 10 ? '0$toWrap' : '$toWrap';
   }
 }
