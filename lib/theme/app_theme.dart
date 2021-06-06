@@ -78,24 +78,3 @@ const Color shrineSurfaceWhite = Color(0xFFFFFBFA);
 const Color shrineBackgroundWhite = Colors.white;
 
 const defaultLetterSpacing = 0.03;
-
-const List<Color> gradientAppColorsx = [
-  Color(0xFFCAD2C5),
-  Color(0xFF84A98C),
-  Color(0xFF52796F),
-  Color(0xFF354F52),
-  Color(0xFF2F3E46),
-];
-
-const List<Color> gradientAppColors = [
-  Color(0xFFCAD2C5),
-  Color(0xFF84A98C),
-  Color(0xFF84A98C),
-  Color(0xFF769780),
-  Color(0xFF688575),
-  Color(0xFF5A7469),
-  Color(0xFF4B625D),
-  Color(0xFF3D5052),
-  Color(0xFF3D5052),
-  Color(0xFF2F3E46),
-];
