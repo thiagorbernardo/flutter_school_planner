@@ -11,7 +11,7 @@ class SchoolController extends GetxController {
     // Subject('https://picsum.photos/seed/789/300', 'Cálculo 2', 'Daniela')
   ];
   List<Task> tasks = [
-    Task(name: 'Prova 1', date: DateTime.now())
+    Task(name: 'Prova de Química E-302', date: DateTime.now())
   ];
 
   void updateHour(TimeOfDay newTime) {
@@ -27,7 +27,7 @@ class SchoolController extends GetxController {
     this.update();
   }
 
-    void addTask(Task task) {
+  void addTask(Task task) {
     task.id = this._uuid.v4();
 
     this.tasks.add(task);
