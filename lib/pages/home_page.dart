@@ -120,7 +120,8 @@ class HomePage extends GetView<SchoolController> {
                           ),
                         );
                       },
-                    )
+                    ),
+                    SizedBox(height: 30,)
                   ],
                 ),
               ),
