@@ -13,11 +13,10 @@ class SchoolController extends GetxController {
     // Subject('https://picsum.photos/seed/789/300', 'Cálculo 2', 'Daniela')
   ];
   List<Task> tasks = [
-    Task(name: 'Prova de Química E-302', date: DateTime.now())
+    // Task(name: 'Prova de Química E-302', date: DateTime.now())
   ];
 
   String getGreeting() {
-    print(time);
     String greeting;
     if (this.time.hour > 17 || this.time.hour < 6)
       greeting = 'Boa Noite';
@@ -27,6 +26,19 @@ class SchoolController extends GetxController {
       greeting = 'Boa Tarde';
 
     return '$greeting, ${user.name}';
+  }
+
+  String getHowManyTasks() {
+    if (this.tasks.length == 1)
+      return 'Próxima tarefa';
+    else if (this.tasks.length <= 3)
+      return 'Próximas ${this.tasks.length} tarefas';
+    else
+      return 'Próximas 3 tarefas';
+  }
+
+  List<Task> getThreeTasks() {
+    return this.tasks.length > 3 ? this.tasks.sublist(0, 3) : this.tasks;
   }
 
   void addSubject(Subject subject) {
