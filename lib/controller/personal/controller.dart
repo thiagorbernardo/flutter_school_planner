@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_planner/models/subject.dart';
 import 'package:school_planner/models/task.dart';
+import 'package:school_planner/models/user.dart';
 import 'package:uuid/uuid.dart';
 
 class SchoolController extends GetxController {
   Uuid _uuid = Uuid();
   DateTime time = DateTime.now();
+  User user = User(name: 'Thiago');
   List<Subject> subjects = [
     // Subject('https://picsum.photos/seed/789/300', 'Cálculo 2', 'Daniela')
   ];
@@ -24,7 +26,7 @@ class SchoolController extends GetxController {
     else
       greeting = 'Boa Tarde';
 
-    return '$greeting, Thiago';
+    return '$greeting, ${user.name}';
   }
 
   void addSubject(Subject subject) {
