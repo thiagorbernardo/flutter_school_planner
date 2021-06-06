@@ -37,11 +37,18 @@ dependencies:
   date_picker_timeline: ^1.2.3
   animated_bottom_navigation_bar: ^0.3.2
   uuid: ^3.0.4
+  animate_icons: ^2.0.0
+  modal_bottom_sheet: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.0
 
+flutter_icons:
+  android: true
+  image_path: "assets/images/launcher_icon.png"
+# flutter pub run flutter_launcher_icons:main
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

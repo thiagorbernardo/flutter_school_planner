@@ -11,5 +11,6 @@ void main() {
     getPages: AppPages.pages,
     debugShowCheckedModeBanner: false,
     theme: buildShrineTheme(),
+    title: 'School Planner',
   ));
 }
