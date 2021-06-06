@@ -3,16 +3,21 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:school_planner/controller/personal/controller.dart';
+import 'package:school_planner/models/task.dart';
 
-class CustomTaskWidget extends GetView<SchoolController> {
+class CustomTaskWidget extends StatelessWidget {
+  final Task task;
+
+  CustomTaskWidget(this.task);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.only(right: 16),
       child: Material(
         elevation: 5,
-        color: Color(0xFFFFE5D9),
+        color: Color(0xFFD8F1FE),
         borderRadius: BorderRadius.circular(20),
         child: Padding(
           padding: EdgeInsets.fromLTRB(2, 0, 0, 0),
@@ -28,19 +33,17 @@ class CustomTaskWidget extends GetView<SchoolController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '19, Set',
+                      task.getDate(),
                       textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
+                      style: GoogleFonts.aBeeZee(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
-                      '14:00',
+                      task.getTime(),
                       textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
+                      style: GoogleFonts.aBeeZee(
                         color: Color(0xFF9E9E9E),
                         fontSize: 16,
                       ),
@@ -51,11 +54,10 @@ class CustomTaskWidget extends GetView<SchoolController> {
               Padding(
                 padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: Text(
-                  'Prova de Química E-302',
+                  task.name,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 15,
+                  style: GoogleFonts.aBeeZee(
+                    fontSize: 16,
                   ),
                 ),
               ),
@@ -63,8 +65,8 @@ class CustomTaskWidget extends GetView<SchoolController> {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 18, 0),
                 child: FaIcon(
-                  FontAwesomeIcons.tasks,
-                  color: Color(0xFFFB5360),
+                  FontAwesomeIcons.bookOpen,
+                  color: Color(0xFFFFA400),
                   size: 24,
                 ),
               ),
