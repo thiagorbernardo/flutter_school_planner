@@ -14,10 +14,17 @@ class SchoolController extends GetxController {
     Task(name: 'Prova de Química E-302', date: DateTime.now())
   ];
 
-  void updateHour(TimeOfDay newTime) {
-    this.time =
-        DateTime(time.year, time.month, time.day, newTime.hour, newTime.minute);
-    this.update();
+  String getGreeting() {
+    print(time);
+    String greeting;
+    if (this.time.hour > 17 || this.time.hour < 6)
+      greeting = 'Boa Noite';
+    else if (this.time.hour < 12)
+      greeting = 'Bom dia';
+    else
+      greeting = 'Boa Tarde';
+
+    return '$greeting, Thiago';
   }
 
   void addSubject(Subject subject) {

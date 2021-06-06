@@ -45,7 +45,8 @@ class HomePage extends GetView<SchoolController> {
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 20, 0, 15),
                 child: AutoSizeText(
-                  'Boa noite, Thiago!',
+                  controller.getGreeting(),
+                  // 'Boa noite, Thiago!',
                   textAlign: TextAlign.start,
                   //GoogleFonts.aBeeZee
                   style: GoogleFonts.aBeeZee(
