@@ -1,6 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:animate_icons/animate_icons.dart';
+import 'package:school_planner/components/fancy_fab.dart';
 import 'package:school_planner/controller/personal/controller.dart';
 import 'package:school_planner/models/subject.dart';
 import 'package:school_planner/models/task.dart';
@@ -16,37 +18,10 @@ class HomePage extends GetView<SchoolController> {
   int i = 1;
   int _bottomNavIndex = 0;
 
-  late AnimationController _animationController;
-  late Animation<double> animation;
-  late CurvedAnimation curve;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xFFFFA400),
-        elevation: 8,
-        onPressed: () => {
-          print('aaa\n'),
-          controller.addSubject(
-            Subject(
-              backgroundImage: 'https://picsum.photos/seed/789/300',
-              name: 'Cálculo $i',
-              professor: 'Daniela',
-            ),
-          ),
-          controller.addTask(
-            Task(
-              name: 'Prova ${i++} de Matemática',
-              date: DateTime.now(),
-            ),
-          ),
-          // print(controller.tasks)
-        },
-        child: FaIcon(
-          FontAwesomeIcons.plus,
-          size: 35,
-        ),
-      ),
+      floatingActionButton: FancyFab(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: [
@@ -86,8 +61,8 @@ class HomePage extends GetView<SchoolController> {
                   DateTime.now(),
                   locale: 'pt-BR',
                   height: 85,
-                  dateTextStyle:
-                      GoogleFonts.aBeeZee(fontSize: 22, fontWeight: FontWeight.w600),
+                  dateTextStyle: GoogleFonts.aBeeZee(
+                      fontSize: 22, fontWeight: FontWeight.w600),
                 ),
               ),
               Padding(
