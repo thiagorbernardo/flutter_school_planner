@@ -1,6 +1,5 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:school_planner/components/bottom_navigator.dart';
 import 'package:school_planner/components/fancy_fab.dart';
 import 'package:school_planner/controller/personal/controller.dart';
 import 'package:lottie/lottie.dart';
@@ -58,19 +57,7 @@ class HomePage extends GetView<SchoolController> {
     return Scaffold(
       floatingActionButton: FancyFab(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        icons: [
-          FontAwesomeIcons.home,
-          FontAwesomeIcons.calendarAlt,
-          FontAwesomeIcons.userGraduate,
-          FontAwesomeIcons.bars,
-        ],
-        activeIndex: _bottomNavIndex,
-        gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.softEdge,
-        onTap: (index) => (_bottomNavIndex = index),
-        //other params
-      ),
+      bottomNavigationBar: BottomNavigation(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
