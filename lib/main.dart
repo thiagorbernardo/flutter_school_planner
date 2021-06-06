@@ -9,6 +9,7 @@ void main() {
     defaultTransition: Transition.native,
     locale: Locale('pt', 'BR'),
     getPages: AppPages.pages,
+    debugShowCheckedModeBanner: false,
     theme: buildShrineTheme(),
   ));
 }
