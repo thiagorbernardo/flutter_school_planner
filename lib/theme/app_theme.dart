@@ -77,4 +77,6 @@ const Color shrineErrorRed = Color(0xFFC5032B);
 const Color shrineSurfaceWhite = Color(0xFFFFFBFA);
 const Color shrineBackgroundWhite = Colors.white;
 
+const strongDeppOrange = Color(0xFFFFA400);
+
 const defaultLetterSpacing = 0.03;

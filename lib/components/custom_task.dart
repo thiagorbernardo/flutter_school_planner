@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:school_planner/controller/personal/controller.dart';
 import 'package:school_planner/models/task.dart';
+import 'package:school_planner/theme/app_theme.dart';
 
 class CustomTaskWidget extends StatelessWidget {
   final Task task;
@@ -70,7 +71,7 @@ class CustomTaskWidget extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(0, 0, 18, 0),
                 child: FaIcon(
                   FontAwesomeIcons.bookOpen,
-                  color: Color(0xFFFFA400),
+                  color: strongDeppOrange,
                   size: 24,
                 ),
               ),
