@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:school_planner/controller/personal/controller.dart';
 import 'package:school_planner/models/subject.dart';
 import 'package:school_planner/models/task.dart';
+import 'package:school_planner/theme/app_theme.dart';
 
 class CustomBottomSheet extends GetView<SchoolController> {
   final AnimateIconController fabController = AnimateIconController();
@@ -46,6 +47,7 @@ class CustomBottomSheet extends GetView<SchoolController> {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
+      color: shrinePink100,
       child: ListView.builder(
         padding: EdgeInsets.fromLTRB(25, 20, 25, 0),
         itemCount: _items.length,
