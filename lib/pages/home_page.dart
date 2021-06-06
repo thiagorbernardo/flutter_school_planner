@@ -1,11 +1,9 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:animate_icons/animate_icons.dart';
 import 'package:school_planner/components/fancy_fab.dart';
 import 'package:school_planner/controller/personal/controller.dart';
-import 'package:school_planner/models/subject.dart';
-import 'package:school_planner/models/task.dart';
+import 'package:lottie/lottie.dart';
 
 import '../components/course_card.dart';
 import '../components/custom_task.dart';
@@ -17,6 +15,43 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 class HomePage extends GetView<SchoolController> {
   int i = 1;
   int _bottomNavIndex = 0;
+
+  Widget getTasksWidgets() {
+    return GetBuilder<SchoolController>(
+      init: SchoolController(),
+      initState: (_) {},
+      builder: (_) {
+        return controller.tasks.length > 0
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                    child: Text(
+                      controller.getHowManyTasks(),
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        color: Color(0xFF616161),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: controller.getThreeTasks().map(
+                      (e) {
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 8.0),
+                          child: CustomTaskWidget(e),
+                        );
+                      },
+                    ).toList(),
+                  )
+                ],
+              )
+            : SizedBox.shrink();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,24 +106,9 @@ class HomePage extends GetView<SchoolController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GetBuilder<SchoolController>(
-                      init: SchoolController(),
-                      initState: (_) {},
-                      builder: (_) {
-                        return Column(
-                            children: controller.tasks.map(
-                          (e) {
-                            print(e.name);
-                            return Padding(
-                              padding: EdgeInsets.only(bottom: 8.0),
-                              child: CustomTaskWidget(e),
-                            );
-                          },
-                        ).toList());
-                      },
-                    ),
+                    this.getTasksWidgets(),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      padding: EdgeInsets.fromLTRB(0, 6, 0, 0),
                       child: Text(
                         'Minhas matérias',
                         textAlign: TextAlign.start,
@@ -103,26 +123,54 @@ class HomePage extends GetView<SchoolController> {
                       initState: (_) {},
                       builder: (_) {
                         return Padding(
-                          padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: controller.subjects.map(
-                                  (e) {
-                                    return Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
-                                      child: CourseCardWidget(e),
-                                    );
-                                  },
-                                ).toList()),
-                          ),
-                        );
+                            padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                            child: controller.subjects.isNotEmpty
+                                ? SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: controller.subjects.map(
+                                          (e) {
+                                            return Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  0, 0, 15, 0),
+                                              child: CourseCardWidget(e),
+                                            );
+                                          },
+                                        ).toList()))
+                                : Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      AutoSizeText(
+                                        'Oops, parece que você ainda não adicionou suas matérias!',
+                                        style: GoogleFonts.aBeeZee(
+                                          fontSize: 22,
+                                        ),
+                                      ),
+                                      Lottie.asset(
+                                        'assets/lottie/student-waiting.json',
+                                        repeat: true,
+                                        reverse: false,
+                                        animate: true,
+                                      ),
+                                      AutoSizeText(
+                                        'Não perca tempo!',
+                                        style: GoogleFonts.aBeeZee(
+                                          fontSize: 22,
+                                        ),
+                                      ),
+                                    ],
+                                  ));
                       },
                     ),
-                    SizedBox(height: 30,)
+                    SizedBox(
+                      height: 30,
+                    )
                   ],
                 ),
               ),

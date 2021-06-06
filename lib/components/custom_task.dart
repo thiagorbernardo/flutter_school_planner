@@ -15,8 +15,12 @@ class CustomTaskWidget extends StatelessWidget {
     return Container(
       height: 70,
       margin: EdgeInsets.only(right: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.black, width: 0.2),
+      ),
       child: Material(
-        elevation: 5,
+        elevation: 8,
         color: Color(0xFFD8F1FE),
         borderRadius: BorderRadius.circular(20),
         child: Padding(
