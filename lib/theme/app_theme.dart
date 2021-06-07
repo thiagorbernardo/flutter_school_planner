@@ -80,3 +80,12 @@ const Color shrineBackgroundWhite = Colors.white;
 const strongDeppOrange = Color(0xFFFFA400);
 
 const defaultLetterSpacing = 0.03;
+
+// Inputs
+TextStyle inputHintStyle = GoogleFonts.aBeeZee(fontSize: 12);
+TextStyle inputLabelStyle = GoogleFonts.aBeeZee(color: shrineBrown900);
+
+OutlineInputBorder inputTextBorderStyle = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(10),
+  borderSide: BorderSide(color: shrineBrown900),
+);
