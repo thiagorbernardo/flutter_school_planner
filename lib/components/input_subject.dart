@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:weekday_selector/weekday_selector.dart';
 
 import 'package:school_planner/components/bottom_sheet.dart';
 import 'package:school_planner/components/text_input.dart';
@@ -17,7 +18,7 @@ class InputSubject extends GetView<InputController> {
 
   InputSubject({required this.schoolController});
 
-  void _onSubmit() {
+  void _onSubmit(BuildContext context) {
     this.schoolController.addSubject(
           Subject(
             backgroundImage: controller.image,
@@ -27,6 +28,7 @@ class InputSubject extends GetView<InputController> {
                 .subjectState.currentState!.fields['professorName']!.value,
           ),
         );
+    Navigator.pop(context);
   }
 
   @override
@@ -68,20 +70,44 @@ class InputSubject extends GetView<InputController> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 10),
+                    padding: EdgeInsets.only(bottom: 20),
                     child: ElevatedButton.icon(
-                      icon: FaIcon(
-                        controller.userHasSelectedImage ? FontAwesomeIcons.check : FontAwesomeIcons.solidImages
-                      ),
+                      icon: FaIcon(controller.userHasSelectedImage
+                          ? FontAwesomeIcons.check
+                          : FontAwesomeIcons.solidImages),
                       onPressed: () => controller.getImage(),
                       style: ButtonStyle(
-                        elevation:  MaterialStateProperty.all(1),
-                        backgroundColor: MaterialStateProperty.all(shrinePink100),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+                        elevation: MaterialStateProperty.all(1),
+                        backgroundColor:
+                            MaterialStateProperty.all(shrinePink100),
+                        shape:
+                            MaterialStateProperty.all(RoundedRectangleBorder()),
                         minimumSize: MaterialStateProperty.all(
                             Size(double.infinity, 50)),
                       ),
-                      label: Text('Escolher imagem de fundo', style: GoogleFonts.aBeeZee(),),
+                      label: Text(
+                        'Escolher imagem de fundo',
+                        style: GoogleFonts.aBeeZee(),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Dias da semana',
+                      style: GoogleFonts.aBeeZee(
+                        fontSize: 16
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8),
+                    child: WeekdaySelector(
+                      onChanged: (day) => controller.toggleWeekDay(day),
+                      elevation: 2,
+                      values: controller.getWeekDaysValues(),
+                      firstDayOfWeek: DateTime.sunday,
+                      shortWeekdays: controller.getWeekDaysNames(),
                     ),
                   ),
                   Spacer(
@@ -90,7 +116,7 @@ class InputSubject extends GetView<InputController> {
                   Padding(
                     padding: EdgeInsets.only(bottom: 20),
                     child: ElevatedButton.icon(
-                      onPressed: () => this._onSubmit(),
+                      onPressed: () => this._onSubmit(context),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                             controller.isCreateSubjectButtonEnabled
