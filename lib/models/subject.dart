@@ -1,8 +1,10 @@
+import 'dart:io';
+
 class Subject {
   late String id;
   late String name;
   late String professor;
-  String backgroundImage;
+  File backgroundImage;
   late String periodicity;
   late DateTime day;
 

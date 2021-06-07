@@ -30,7 +30,7 @@ class CourseCardWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(
+              Image.file(
                 subject.backgroundImage,
                 width: double.infinity,
                 height: 120,

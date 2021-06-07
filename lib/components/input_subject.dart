@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
 import 'package:school_planner/components/bottom_sheet.dart';
 import 'package:school_planner/components/text_input.dart';
 import 'package:school_planner/controller/personal/controller.dart';
@@ -19,7 +20,7 @@ class InputSubject extends GetView<InputController> {
   void _onSubmit() {
     this.schoolController.addSubject(
           Subject(
-            backgroundImage: 'https://picsum.photos/seed/789/300',
+            backgroundImage: controller.image,
             name: controller
                 .subjectState.currentState!.fields['subjectName']!.value,
             professor: controller
@@ -41,7 +42,7 @@ class InputSubject extends GetView<InputController> {
       builder: (_) {
         return BarBottomSheet(
           child: CustomBottomSheet(
-            height: 400,
+            height: 500,
             items: [],
             customWidget: FormBuilder(
               key: controller.subjectState,
@@ -66,11 +67,26 @@ class InputSubject extends GetView<InputController> {
                       onChanged: onValueChanged,
                     ),
                   ),
-                  // Padding(
-                  //   padding: EdgeInsets.only(bottom: 10),
-                  //   child: FormBuilderFile,
-                  // ),
-                  Spacer(flex: 2,),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: ElevatedButton.icon(
+                      icon: FaIcon(
+                        controller.userHasSelectedImage ? FontAwesomeIcons.check : FontAwesomeIcons.solidImages
+                      ),
+                      onPressed: () => controller.getImage(),
+                      style: ButtonStyle(
+                        elevation:  MaterialStateProperty.all(1),
+                        backgroundColor: MaterialStateProperty.all(shrinePink100),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+                        minimumSize: MaterialStateProperty.all(
+                            Size(double.infinity, 50)),
+                      ),
+                      label: Text('Escolher imagem de fundo', style: GoogleFonts.aBeeZee(),),
+                    ),
+                  ),
+                  Spacer(
+                    flex: 2,
+                  ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 20),
                     child: ElevatedButton.icon(
