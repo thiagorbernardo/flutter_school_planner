@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_planner/models/subject.dart';
 import 'package:school_planner/models/task.dart';
