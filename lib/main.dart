@@ -7,7 +7,8 @@ void main() {
   runApp(GetMaterialApp(
     initialRoute: '/home',
     defaultTransition: Transition.native,
-    locale: Locale('pt', 'BR'),
+    locale: Get.deviceLocale,
+    fallbackLocale: Locale('pt', 'BR'),
     getPages: AppPages.pages,
     debugShowCheckedModeBanner: false,
     theme: buildShrineTheme(),
