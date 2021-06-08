@@ -8,16 +8,19 @@ class CustomInputTextField extends StatelessWidget {
   final String hint;
   final String label;
   final Function(String? value) onChanged;
+  final Function onSubmitted;
 
   CustomInputTextField({
     required this.fieldName,
     required this.hint,
     required this.label,
     required this.onChanged,
+    required this.onSubmitted,
   });
 
   @override
   Widget build(BuildContext context) {
+    // final node = FocusScope.of(context);
     return FormBuilderTextField(
       name: this.fieldName,
       maxLength: 25,
@@ -28,12 +31,16 @@ class CustomInputTextField extends StatelessWidget {
       ]),
       cursorColor: Colors.black,
       onChanged: (value) => this.onChanged(value),
-      // onSubmitted: (value) => print('end with $value'),
+      // onSubmitted: (_) {
+      //   // onSubmitted();
+      //   print("finish");
+
+      //   // print(node.hasFocus);
+      // },
       decoration: InputDecoration(
         hintText: this.hint,
         hintStyle: inputHintStyle,
         labelText: this.label,
-        // errorText: 'ESTÁ ERRADP',
         labelStyle: inputLabelStyle,
         focusedBorder: inputTextBorderStyle,
         border: inputTextBorderStyle,

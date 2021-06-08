@@ -68,9 +68,7 @@ class HomePage extends GetView<SchoolController> {
                 padding: EdgeInsets.fromLTRB(15, 20, 0, 15),
                 child: AutoSizeText(
                   controller.getGreeting(),
-                  // 'Boa noite, Thiago!',
                   textAlign: TextAlign.start,
-                  //GoogleFonts.aBeeZee
                   style: GoogleFonts.aBeeZee(
                       fontSize: 26,
                       fontWeight: FontWeight.w700,
@@ -110,49 +108,51 @@ class HomePage extends GetView<SchoolController> {
                       initState: (_) {},
                       builder: (_) {
                         return Padding(
-                            padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                            child: controller.subjects.isNotEmpty
-                                ? SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: controller.subjects.map(
-                                          (e) {
-                                            return Padding(
-                                              padding: EdgeInsets.fromLTRB(
-                                                  0, 0, 15, 0),
-                                              child: CourseCardWidget(e),
-                                            );
-                                          },
-                                        ).toList()))
-                                : Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      AutoSizeText(
-                                        'Oops, parece que você ainda não adicionou suas matérias!',
-                                        style: GoogleFonts.aBeeZee(
-                                          fontSize: 22,
-                                        ),
+                          padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                          child: controller.subjects.isNotEmpty
+                              ? SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: controller.subjects.map(
+                                      (e) {
+                                        return Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 0, 15, 0),
+                                          child: CourseCardWidget(e),
+                                        );
+                                      },
+                                    ).toList(),
+                                  ),
+                                )
+                              : Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    AutoSizeText(
+                                      'Oops, parece que você ainda não adicionou suas matérias!',
+                                      style: GoogleFonts.aBeeZee(
+                                        fontSize: 22,
                                       ),
-                                      Lottie.asset(
-                                        'assets/lottie/student-waiting.json',
-                                        repeat: true,
-                                        reverse: false,
-                                        animate: true,
+                                    ),
+                                    Lottie.asset(
+                                      'assets/lottie/student-waiting.json',
+                                      repeat: true,
+                                      reverse: false,
+                                      animate: true,
+                                    ),
+                                    AutoSizeText(
+                                      'Não perca tempo!',
+                                      style: GoogleFonts.aBeeZee(
+                                        fontSize: 22,
                                       ),
-                                      AutoSizeText(
-                                        'Não perca tempo!',
-                                        style: GoogleFonts.aBeeZee(
-                                          fontSize: 22,
-                                        ),
-                                      ),
-                                    ],
-                                  ));
+                                    ),
+                                  ],
+                                ),
+                        );
                       },
                     ),
                     SizedBox(
