@@ -21,12 +21,12 @@ class InputSubject extends GetView<InputController> {
   void _onSubmit(BuildContext context) {
     this.schoolController.addSubject(
           Subject(
-            backgroundImage: controller.image,
-            name: controller
-                .subjectState.currentState!.fields['subjectName']!.value,
-            professor: controller
-                .subjectState.currentState!.fields['professorName']!.value,
-          ),
+              backgroundImage: controller.image,
+              name: controller
+                  .subjectState.currentState!.fields['subjectName']!.value,
+              professor: controller
+                  .subjectState.currentState!.fields['professorName']!.value,
+              periodicity: controller.getSelectedWeekDays()),
         );
     Navigator.pop(context);
   }
@@ -35,6 +35,12 @@ class InputSubject extends GetView<InputController> {
   Widget build(BuildContext context) {
     void onValueChanged(String? value) {
       controller.subjectState.currentState!.save();
+      controller.checkValidations();
+    }
+
+    void _onWeekDaySelected(int day) async {
+      await controller.toggleWeekDay(day, context);
+
       controller.checkValidations();
     }
 
@@ -58,6 +64,7 @@ class InputSubject extends GetView<InputController> {
                       hint: 'Matemática, Física, História...',
                       label: 'Nome da matéria',
                       onChanged: onValueChanged,
+                      onSubmitted: () => FocusScope.of(context).nextFocus(),
                     ),
                   ),
                   Padding(
@@ -67,6 +74,7 @@ class InputSubject extends GetView<InputController> {
                       hint: 'Thiago...',
                       label: 'Nome do professor',
                       onChanged: onValueChanged,
+                      onSubmitted: () => FocusScope.of(context).nextFocus(),
                     ),
                   ),
                   Padding(
@@ -95,16 +103,17 @@ class InputSubject extends GetView<InputController> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Dias da semana',
-                      style: GoogleFonts.aBeeZee(
-                        fontSize: 16
-                      ),
+                      style: GoogleFonts.aBeeZee(fontSize: 16),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 8),
                     child: WeekdaySelector(
-                      onChanged: (day) => controller.toggleWeekDay(day),
+                      onChanged: (day) {
+                        _onWeekDaySelected(day);
+                      },
                       elevation: 2,
+                      selectedFillColor: shrinePink100,
                       values: controller.getWeekDaysValues(),
                       firstDayOfWeek: DateTime.sunday,
                       shortWeekdays: controller.getWeekDaysNames(),
