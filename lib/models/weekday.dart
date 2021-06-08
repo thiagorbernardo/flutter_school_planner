@@ -4,8 +4,9 @@ class WeekDay {
   bool isSelected = false;
   late TimeOfDay occurrence;
   String dayName;
+  int dayOfWeek;
 
-  WeekDay(this.dayName);
+  WeekDay(this.dayName, this.dayOfWeek);
 
   void toggleSelection() {
     this.isSelected = !this.isSelected;

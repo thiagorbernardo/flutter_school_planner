@@ -41,15 +41,11 @@ class SchoolController extends GetxController {
   }
 
   void addSubject(Subject subject) {
-    subject.id = this._uuid.v4();
-
     this.subjects.add(subject);
     this.update();
   }
 
   void addTask(Task task) {
-    task.id = this._uuid.v4();
-
     this.tasks.add(task);
     this.update();
   }

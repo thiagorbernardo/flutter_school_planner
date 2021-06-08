@@ -50,7 +50,7 @@ class CourseCardWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
                 child: Text(
-                  'Seg  14:00 - 16:00 / Ter 20:00 - 21:00\nSeg  14:00 - 16:00 / Ter 20:00 - 21:00\nSeg  14:00 - 16:00 / Ter 20:00 - 21:00',
+                  subject.getSubjectPeriodicity(),
                   textAlign: TextAlign.start,
                   style: GoogleFonts.roboto(letterSpacing: 0.5),
                 ),

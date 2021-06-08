@@ -18,13 +18,13 @@ class InputController extends GetxController {
   TimeOfDay firstSelectedTIme = TimeOfDay.now();
 
   List<WeekDay> weekDays = [
-    WeekDay('Domingo'), // Sunday
-    WeekDay('Segunda'), // Monday
-    WeekDay('Terça'), // Tuesday
-    WeekDay('Quarta'), // Wednesday
-    WeekDay('Quinta'), // Thursday
-    WeekDay('Sexta'), // Friday
-    WeekDay('Sábado'), // Saturday
+    WeekDay('Domingo', DateTime.sunday), // Sunday
+    WeekDay('Segunda', DateTime.monday), // Monday
+    WeekDay('Terça', DateTime.tuesday), // Tuesday
+    WeekDay('Quarta', DateTime.wednesday), // Wednesday
+    WeekDay('Quinta', DateTime.thursday), // Thursday
+    WeekDay('Sexta', DateTime.friday), // Friday
+    WeekDay('Sábado', DateTime.saturday), // Saturday
   ];
 
   Future getImage() async {
