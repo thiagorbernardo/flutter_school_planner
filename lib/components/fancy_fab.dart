@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:school_planner/components/bottom_sheet.dart';
 import 'package:school_planner/components/input_subject.dart';
+import 'package:school_planner/components/input_task.dart';
 import 'package:school_planner/components/list_item.dart';
 import 'package:school_planner/controller/personal/controller.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -16,14 +17,8 @@ class FancyFab extends GetView<SchoolController> {
       showBarModalBottomSheet(
         context: context,
         barrierColor: Colors.black.withOpacity(0.8),
-        builder: (context) => InputSubject(
+        builder: (context) => InputTask(
           schoolController: controller,
-        ),
-      );
-      controller.addTask(
-        Task(
-          name: 'Prova ${i++} de Matemática',
-          date: DateTime.now(),
         ),
       );
     }

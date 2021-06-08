@@ -21,12 +21,13 @@ class InputSubject extends GetView<InputController> {
   void _onSubmit(BuildContext context) {
     this.schoolController.addSubject(
           Subject(
-              backgroundImage: controller.image,
-              name: controller
-                  .subjectState.currentState!.fields['subjectName']!.value,
-              professor: controller
-                  .subjectState.currentState!.fields['professorName']!.value,
-              periodicity: controller.getSelectedWeekDays()),
+            backgroundImage: controller.image,
+            name: controller
+                .subjectState.currentState!.fields['subjectName']!.value,
+            professor: controller
+                .subjectState.currentState!.fields['professorName']!.value,
+            periodicity: controller.getSelectedWeekDays(),
+          ),
         );
     Navigator.pop(context);
   }
@@ -35,13 +36,13 @@ class InputSubject extends GetView<InputController> {
   Widget build(BuildContext context) {
     void onValueChanged(String? value) {
       controller.subjectState.currentState!.save();
-      controller.checkValidations();
+      controller.checkInputSubjectValidations();
     }
 
     void _onWeekDaySelected(int day) async {
       await controller.toggleWeekDay(day, context);
 
-      controller.checkValidations();
+      controller.checkInputSubjectValidations();
     }
 
     return GetBuilder<InputController>(

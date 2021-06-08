@@ -8,8 +8,10 @@ import 'package:school_planner/models/weekday.dart';
 
 class InputController extends GetxController {
   GlobalKey<FormBuilderState> subjectState = GlobalKey<FormBuilderState>();
+  GlobalKey<FormBuilderState> taskState = GlobalKey<FormBuilderState>();
 
   bool isCreateSubjectButtonEnabled = false;
+  bool isTaskSubjectButtonEnabled = false;
   bool userHasSelectedImage = false;
 
   late File image;
@@ -34,17 +36,26 @@ class InputController extends GetxController {
       this.image = File(pickedFile.path);
       this.userHasSelectedImage = true;
 
-      this.checkValidations();
+      this.checkInputSubjectValidations();
     } else {
       print('No image selected.');
     }
   }
 
-  void checkValidations() {
-    bool stateIsNull = subjectState.currentState?.validate() == null;
+  void checkInputSubjectValidations() {
+    bool stateIsNull = this.subjectState.currentState?.validate() == null;
     if (!stateIsNull)
-      isCreateSubjectButtonEnabled =
+      this.isCreateSubjectButtonEnabled =
           subjectState.currentState!.validate() && this.userHasSelectedImage;
+
+    this.update();
+  }
+
+    void checkInputTaskValidations() {
+    bool stateIsNull = this.taskState.currentState?.validate() == null;
+    if (!stateIsNull)
+      this.isTaskSubjectButtonEnabled =
+          taskState.currentState!.validate() && this.userHasSelectedImage;
 
     this.update();
   }
