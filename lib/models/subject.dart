@@ -4,7 +4,7 @@ import 'package:school_planner/models/weekday.dart';
 import 'package:uuid/uuid.dart';
 
 class Subject {
-  late String id;
+  final String id = Uuid().v4();
   String name;
   String professor;
   File backgroundImage;
@@ -16,7 +16,6 @@ class Subject {
       required this.name,
       required this.professor,
       required this.periodicity}) {
-    this.id = Uuid().v4();
     // this.periodicity.sort((a, b) => a.dayOfWeek.compareTo(b.dayOfWeek));
   }
 

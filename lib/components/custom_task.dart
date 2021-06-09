@@ -6,7 +6,7 @@ import 'package:school_planner/controller/personal/controller.dart';
 import 'package:school_planner/models/task.dart';
 import 'package:school_planner/theme/app_theme.dart';
 
-class CustomTaskWidget extends StatelessWidget {
+class CustomTaskWidget extends GetView<SchoolController> {
   final Task task;
 
   CustomTaskWidget(this.task);
@@ -56,15 +56,35 @@ class CustomTaskWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                child: Text(
-                  task.name,
-                  textAlign: TextAlign.start,
-                  style: GoogleFonts.aBeeZee(
-                    fontSize: 16,
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                    child: Text(
+                      task.name,
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.aBeeZee(
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
-                ),
+                  task.subjectId != null
+                      ? Padding(
+                          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                          child: Text(
+                            controller.getSubjectRelatedToTask(task.subjectId),
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.aBeeZee(
+                              fontSize: 12,
+                              color: Color(0xFF9E9E9E),
+                            ),
+                          ),
+                        )
+                      : SizedBox.shrink(),
+                ],
               ),
               Spacer(),
               Padding(

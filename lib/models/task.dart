@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 List<String> months = [
   'Janeiro',
   'Fevereiro',
@@ -29,12 +31,12 @@ List<String> monthsAbr = [
 ];
 
 class Task {
-  late String id;
-
+  final String id = Uuid().v4();
   String name;
   DateTime date;
+  String? subjectId;
 
-  Task({required this.name, required this.date});
+  Task({required this.name, required this.date, this.subjectId});
 
   String getDate() {
     return '${this._wrapInZero(this.date.day)}, ${monthsAbr[this.date.month - 1]}';

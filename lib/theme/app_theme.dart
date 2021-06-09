@@ -49,7 +49,7 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
 }
 
 const ColorScheme _shrineColorScheme = ColorScheme(
-  primary: shrinePink400,
+  primary: shrinePink100,
   primaryVariant: shrineBrown900,
   secondary: shrinePink50,
   secondaryVariant: shrineBrown900,
@@ -90,7 +90,7 @@ OutlineInputBorder inputTextBorderStyle = OutlineInputBorder(
   borderSide: BorderSide(color: shrineBrown900),
 );
 
-InputDecoration standardInputDecoration (String label) => InputDecoration(
+InputDecoration standardInputDecoration(String label) => InputDecoration(
   hintStyle: inputHintStyle,
   labelStyle: inputLabelStyle,
   labelText: label,
