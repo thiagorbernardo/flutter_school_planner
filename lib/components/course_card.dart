@@ -1,7 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:school_planner/controller/personal/controller.dart';
 import 'package:school_planner/models/subject.dart';
 
 class CourseCardWidget extends StatelessWidget {
@@ -58,8 +58,10 @@ class CourseCardWidget extends StatelessWidget {
               Spacer(),
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 0, 15, 10),
-                child: Text(
+                child: AutoSizeText(
                   'Professor(a): ${subject.professor}',
+                  maxLines: 1,
+                  minFontSize: 10,
                   style: GoogleFonts.roboto(
                     color: Color(0xFF9E9E9E),
                     letterSpacing: 1.1,

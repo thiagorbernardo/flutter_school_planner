@@ -9,6 +9,7 @@ class CustomInputTextField extends StatelessWidget {
   final String label;
   final Function(String? value) onChanged;
   final Function onSubmitted;
+  final int? maxLength;
 
   CustomInputTextField({
     required this.fieldName,
@@ -16,6 +17,7 @@ class CustomInputTextField extends StatelessWidget {
     required this.label,
     required this.onChanged,
     required this.onSubmitted,
+    this.maxLength,
   });
 
   @override
@@ -23,7 +25,7 @@ class CustomInputTextField extends StatelessWidget {
     // final node = FocusScope.of(context);
     return FormBuilderTextField(
       name: this.fieldName,
-      maxLength: 25,
+      maxLength: this.maxLength != null ? this.maxLength :  25,
       validator: FormBuilderValidators.compose([
         FormBuilderValidators.required(context, errorText: "Campo obrigatório"),
         FormBuilderValidators.minLength(context, 3,

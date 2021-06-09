@@ -67,6 +67,7 @@ class InputSubject extends GetView<InputController> {
                       label: 'Nome da matéria',
                       onChanged: onValueChanged,
                       onSubmitted: () => FocusScope.of(context).nextFocus(),
+                      maxLength: 55,
                     ),
                   ),
                   Padding(

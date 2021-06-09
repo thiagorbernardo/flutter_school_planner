@@ -49,7 +49,7 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
 }
 
 const ColorScheme _shrineColorScheme = ColorScheme(
-  primary: shrinePink100,
+  primary: shrinePink300,
   primaryVariant: shrineBrown900,
   secondary: shrinePink50,
   secondaryVariant: shrineBrown900,
