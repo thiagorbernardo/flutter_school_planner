@@ -10,6 +10,7 @@ class CustomInputTextField extends StatelessWidget {
   final Function(String? value) onChanged;
   final Function onSubmitted;
   final int? maxLength;
+  final bool isName;
 
   CustomInputTextField({
     required this.fieldName,
@@ -18,6 +19,7 @@ class CustomInputTextField extends StatelessWidget {
     required this.onChanged,
     required this.onSubmitted,
     this.maxLength,
+    this.isName = false
   });
 
   @override
@@ -32,6 +34,8 @@ class CustomInputTextField extends StatelessWidget {
             errorText: "Mínimo 3 caracteres"),
       ]),
       cursorColor: Colors.black,
+      keyboardType: TextInputType.name,
+      textCapitalization: this.isName ? TextCapitalization.words : TextCapitalization.sentences,
       onChanged: (value) => this.onChanged(value),
       // onSubmitted: (_) {
       //   // onSubmitted();

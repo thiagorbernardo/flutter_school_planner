@@ -78,6 +78,7 @@ class InputSubject extends GetView<InputController> {
                       label: 'Nome do professor',
                       onChanged: onValueChanged,
                       onSubmitted: () => FocusScope.of(context).nextFocus(),
+                      isName: true,
                     ),
                   ),
                   Padding(
