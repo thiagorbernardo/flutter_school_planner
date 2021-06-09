@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:school_planner/components/date_time_input.dart';
-import 'package:weekday_selector/weekday_selector.dart';
+import 'package:school_planner/components/elevated_button.dart';
 
 import 'package:school_planner/components/bottom_sheet.dart';
 import 'package:school_planner/components/text_input.dart';
@@ -23,9 +20,12 @@ class InputTask extends GetView<InputController> {
   void _onSubmit(BuildContext context) {
     this.schoolController.addTask(
           Task(
-            name: controller.taskState.currentState!.fields['taskName']!.value,
-            date: controller.taskState.currentState!.fields['taskDate']!.value,
-          ),
+              name:
+                  controller.taskState.currentState!.fields['taskName']!.value,
+              date:
+                  controller.taskState.currentState!.fields['taskDate']!.value,
+              subjectId: controller
+                  .taskState.currentState!.fields['subjectsTaskChoice']!.value),
         );
     Navigator.pop(context);
   }
@@ -40,7 +40,6 @@ class InputTask extends GetView<InputController> {
     void onDateValueChanged(DateTime? value) {
       controller.taskState.currentState!.save();
       controller.checkInputTaskValidations();
-
     }
 
     return GetBuilder<InputController>(
@@ -49,7 +48,7 @@ class InputTask extends GetView<InputController> {
       builder: (_) {
         return BarBottomSheet(
           child: CustomBottomSheet(
-            height: 500,
+            height: 400,
             items: [],
             customWidget: FormBuilder(
               key: controller.taskState,
@@ -70,8 +69,26 @@ class InputTask extends GetView<InputController> {
                     padding: EdgeInsets.only(bottom: 10),
                     child: CustomDateTimeInputField(
                       fieldName: 'taskDate',
-                      label: 'Nome da tarefa',
+                      label: 'Data da tarefa',
                       onChanged: onDateValueChanged,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: FormBuilderDropdown(
+                      name: 'subjectsTaskChoice',
+                      allowClear: true,
+                      items: schoolController.subjects.map(
+                        (e) {
+                          print(e);
+                          return DropdownMenuItem(
+                            value: e.id,
+                            child: Text(e.name),
+                          );
+                        },
+                      ).toList(),
+                      decoration: standardInputDecoration('Selecionar matéria'),
+                      // onChanged: onDateValueChanged,
                     ),
                   ),
                   Spacer(
@@ -79,28 +96,10 @@ class InputTask extends GetView<InputController> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 20),
-                    child: ElevatedButton.icon(
-                      onPressed: () => this._onSubmit(context),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            controller.isTaskSubjectButtonEnabled
-                                ? shrinePink100
-                                : Colors.grey),
-                        shape: MaterialStateProperty.all(StadiumBorder()),
-                        minimumSize: MaterialStateProperty.all(
-                            Size(double.minPositive, 50)),
-                      ),
-                      icon: FaIcon(
-                        controller.isTaskSubjectButtonEnabled
-                            ? FontAwesomeIcons.check
-                            : FontAwesomeIcons.times,
-                      ),
-                      label: Text(
-                        controller.isTaskSubjectButtonEnabled
-                            ? 'Criar tarefa'
-                            : 'Preencha todos os campos',
-                        style: GoogleFonts.aBeeZee(fontSize: 15),
-                      ),
+                    child: CustomElevatedButton(
+                      isEnabled: controller.isTaskSubjectButtonEnabled,
+                      label: 'Criar tarefa',
+                      onSubmit: (context) => this._onSubmit(context),
                     ),
                   ),
                 ],
