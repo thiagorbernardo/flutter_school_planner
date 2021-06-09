@@ -9,11 +9,8 @@ class CustomDateTimeInputField extends StatelessWidget {
   final String label;
   final Function(DateTime? value) onChanged;
 
-  CustomDateTimeInputField({
-    required this.fieldName,
-    required this.onChanged,
-    required this.label
-  });
+  CustomDateTimeInputField(
+      {required this.fieldName, required this.onChanged, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +26,7 @@ class CustomDateTimeInputField extends StatelessWidget {
       validator: FormBuilderValidators.compose([
         FormBuilderValidators.required(context, errorText: "Campo obrigatório"),
       ]),
-      decoration: InputDecoration(
-        hintStyle: inputHintStyle,
-        labelStyle: inputLabelStyle,
-        focusedBorder: inputTextBorderStyle,
-        border: inputTextBorderStyle,
-        labelText: this.label,
-      ),
+      decoration: standardInputDecoration(this.label),
     );
   }
 }

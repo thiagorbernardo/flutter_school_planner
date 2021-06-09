@@ -89,3 +89,11 @@ OutlineInputBorder inputTextBorderStyle = OutlineInputBorder(
   borderRadius: BorderRadius.circular(10),
   borderSide: BorderSide(color: shrineBrown900),
 );
+
+InputDecoration standardInputDecoration (String label) => InputDecoration(
+  hintStyle: inputHintStyle,
+  labelStyle: inputLabelStyle,
+  labelText: label,
+  focusedBorder: inputTextBorderStyle,
+  border: inputTextBorderStyle,
+);
