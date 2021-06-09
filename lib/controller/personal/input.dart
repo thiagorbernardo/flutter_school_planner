@@ -51,11 +51,10 @@ class InputController extends GetxController {
     this.update();
   }
 
-    void checkInputTaskValidations() {
+  void checkInputTaskValidations() {
     bool stateIsNull = this.taskState.currentState?.validate() == null;
     if (!stateIsNull)
-      this.isTaskSubjectButtonEnabled =
-          taskState.currentState!.validate() && this.userHasSelectedImage;
+      this.isTaskSubjectButtonEnabled = taskState.currentState!.validate();
 
     this.update();
   }
