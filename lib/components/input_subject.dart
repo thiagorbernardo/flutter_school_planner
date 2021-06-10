@@ -22,7 +22,7 @@ class InputSubject extends GetView<InputController> {
   void _onSubmit(BuildContext context) {
     this.schoolController.addSubject(
           Subject(
-            backgroundImage: controller.image,
+            backgroundImage: controller.userHasSelectedImage ? controller.image : null,
             name: controller
                 .subjectState.currentState!.fields['subjectName']!.value,
             professor: controller

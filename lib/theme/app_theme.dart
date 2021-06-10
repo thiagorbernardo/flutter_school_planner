@@ -91,9 +91,9 @@ OutlineInputBorder inputTextBorderStyle = OutlineInputBorder(
 );
 
 InputDecoration standardInputDecoration(String label) => InputDecoration(
-  hintStyle: inputHintStyle,
-  labelStyle: inputLabelStyle,
-  labelText: label,
-  focusedBorder: inputTextBorderStyle,
-  border: inputTextBorderStyle,
-);
+      hintStyle: inputHintStyle,
+      labelStyle: inputLabelStyle,
+      labelText: label,
+      focusedBorder: inputTextBorderStyle,
+      border: inputTextBorderStyle,
+    );

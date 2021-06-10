@@ -46,7 +46,7 @@ class InputController extends GetxController {
     bool stateIsNull = this.subjectState.currentState?.validate() == null;
     if (!stateIsNull)
       this.isCreateSubjectButtonEnabled =
-          subjectState.currentState!.validate() && this.userHasSelectedImage;
+          subjectState.currentState!.validate();
 
     this.update();
   }

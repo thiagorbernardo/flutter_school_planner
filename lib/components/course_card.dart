@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:school_planner/models/subject.dart';
+import 'package:school_planner/theme/app_theme.dart';
 
 class CourseCardWidget extends StatelessWidget {
   final Subject subject;
@@ -30,12 +31,27 @@ class CourseCardWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.file(
-                subject.backgroundImage,
-                width: double.infinity,
-                height: 120,
-                fit: BoxFit.cover,
-              ),
+              subject.backgroundImage != null
+                  ? Image.file(
+                      subject.backgroundImage!,
+                      width: double.infinity,
+                      height: 120,
+                      fit: BoxFit.cover,
+                    )
+                  : Container(
+                      height: 120,
+                      color: shrinePink50,
+                      child: AutoSizeText(
+                        subject.name,
+                        maxLines: 4,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.aBeeZee(fontSize: 16),
+                      ),
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12,
+                      ),
+                    ),
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 15, 15, 0),
                 child: Text(

@@ -7,12 +7,12 @@ class Subject {
   final String id = Uuid().v4();
   String name;
   String professor;
-  File backgroundImage;
+  File? backgroundImage;
   List<WeekDay> periodicity;
   late DateTime day;
 
   Subject(
-      {required this.backgroundImage,
+      {this.backgroundImage,
       required this.name,
       required this.professor,
       required this.periodicity}) {

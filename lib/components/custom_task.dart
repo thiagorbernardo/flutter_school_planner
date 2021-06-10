@@ -62,8 +62,13 @@ class CustomTaskWidget extends GetView<SchoolController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  task.subjectId != null ?
-                  Spacer(flex: 7,) : Spacer(flex: 1,),
+                  task.subjectId != null
+                      ? Spacer(
+                          flex: 7,
+                        )
+                      : Spacer(
+                          flex: 1,
+                        ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                     child: AutoSizeText(
@@ -76,7 +81,9 @@ class CustomTaskWidget extends GetView<SchoolController> {
                       ),
                     ),
                   ),
-                  Spacer(flex: 1,),
+                  Spacer(
+                    flex: 1,
+                  ),
                   task.subjectId != null
                       ? Padding(
                           padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
@@ -90,8 +97,11 @@ class CustomTaskWidget extends GetView<SchoolController> {
                           ),
                         )
                       : SizedBox.shrink(),
-                  task.subjectId != null ?
-                  SizedBox(height: 10,) : SizedBox.shrink(),
+                  task.subjectId != null
+                      ? SizedBox(
+                          height: 10,
+                        )
+                      : SizedBox.shrink(),
                 ],
               ),
               Spacer(),

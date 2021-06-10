@@ -12,22 +12,21 @@ class CustomInputTextField extends StatelessWidget {
   final int? maxLength;
   final bool isName;
 
-  CustomInputTextField({
-    required this.fieldName,
-    required this.hint,
-    required this.label,
-    required this.onChanged,
-    required this.onSubmitted,
-    this.maxLength,
-    this.isName = false
-  });
+  CustomInputTextField(
+      {required this.fieldName,
+      required this.hint,
+      required this.label,
+      required this.onChanged,
+      required this.onSubmitted,
+      this.maxLength,
+      this.isName = false});
 
   @override
   Widget build(BuildContext context) {
     // final node = FocusScope.of(context);
     return FormBuilderTextField(
       name: this.fieldName,
-      maxLength: this.maxLength != null ? this.maxLength :  25,
+      maxLength: this.maxLength != null ? this.maxLength : 25,
       validator: FormBuilderValidators.compose([
         FormBuilderValidators.required(context, errorText: "Campo obrigatório"),
         FormBuilderValidators.minLength(context, 3,
@@ -35,7 +34,8 @@ class CustomInputTextField extends StatelessWidget {
       ]),
       cursorColor: Colors.black,
       keyboardType: TextInputType.name,
-      textCapitalization: this.isName ? TextCapitalization.words : TextCapitalization.sentences,
+      textCapitalization:
+          this.isName ? TextCapitalization.words : TextCapitalization.sentences,
       onChanged: (value) => this.onChanged(value),
       // onSubmitted: (_) {
       //   // onSubmitted();
