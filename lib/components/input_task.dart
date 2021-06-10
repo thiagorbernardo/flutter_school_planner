@@ -78,7 +78,7 @@ class InputTask extends GetView<InputController> {
                     child: FormBuilderDropdown(
                       name: 'subjectsTaskChoice',
                       allowClear: true,
-                      items: schoolController.subjects.map(
+                      items: schoolController.getUserSubjects().map(
                         (e) {
                           print(e);
                           return DropdownMenuItem(

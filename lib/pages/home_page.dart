@@ -13,14 +13,13 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 
 class HomePage extends GetView<SchoolController> {
   int i = 1;
-  int _bottomNavIndex = 0;
 
   Widget getTasksWidgets() {
     return GetBuilder<SchoolController>(
       init: SchoolController(),
       initState: (_) {},
       builder: (_) {
-        return controller.tasks.length > 0
+        return !controller.isTasksEmpty()
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -54,6 +53,7 @@ class HomePage extends GetView<SchoolController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getMock();
     return Scaffold(
       floatingActionButton: FancyFab(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -109,7 +109,7 @@ class HomePage extends GetView<SchoolController> {
                       builder: (_) {
                         return Padding(
                           padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                          child: controller.subjects.isNotEmpty
+                          child: !controller.isSubjectsEmpty()
                               ? SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
@@ -117,7 +117,7 @@ class HomePage extends GetView<SchoolController> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: controller.subjects.map(
+                                    children: controller.getUserSubjects().map(
                                       (e) {
                                         return Padding(
                                           padding:

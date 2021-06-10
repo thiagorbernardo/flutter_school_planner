@@ -45,7 +45,7 @@ class CourseCardWidget extends StatelessWidget {
                         subject.name,
                         maxLines: 4,
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.aBeeZee(fontSize: 16),
+                        style: GoogleFonts.aBeeZee(fontSize: 16, letterSpacing: 1,),
                       ),
                       alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(
