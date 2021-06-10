@@ -1,4 +1,7 @@
+import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
+
+part 'task.g.dart';
 
 List<String> months = [
   'Janeiro',
@@ -30,10 +33,15 @@ List<String> monthsAbr = [
   'Dez'
 ];
 
+@HiveType(typeId: 2)
 class Task {
+  @HiveField(0)
   final String id = Uuid().v4();
+  @HiveField(1)
   String name;
+  @HiveField(2)
   DateTime date;
+  @HiveField(3)
   String? subjectId;
 
   Task({required this.name, required this.date, this.subjectId});

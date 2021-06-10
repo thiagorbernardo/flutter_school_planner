@@ -1,14 +1,25 @@
 import 'dart:io';
+import 'package:hive/hive.dart';
+
 
 import 'package:school_planner/models/weekday.dart';
 import 'package:uuid/uuid.dart';
 
+part 'subject.g.dart';
+
+@HiveType(typeId: 1)
 class Subject {
+  @HiveField(0)
   final String id = Uuid().v4();
+  @HiveField(1)
   String name;
+  @HiveField(2)
   String professor;
+  @HiveField(3)
   File? backgroundImage;
+  @HiveField(4)
   List<WeekDay> periodicity;
+  @HiveField(5)
   late DateTime day;
 
   Subject(

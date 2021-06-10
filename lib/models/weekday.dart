@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
+part 'weekday.g.dart';
+
+@HiveType(typeId: 3)
 class WeekDay {
+  @HiveField(0)
   bool isSelected = false;
-  late TimeOfDay occurrence;
+  @HiveField(1)
+  late TimeOfDay occurrence; //TODO: is going fail here
+  @HiveField(2)
   String dayName;
+  @HiveField(3)
   int dayOfWeek;
 
   WeekDay(this.dayName, this.dayOfWeek);
