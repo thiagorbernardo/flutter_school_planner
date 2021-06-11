@@ -8,12 +8,14 @@ part './app_routes.dart';
 abstract class AppPages {
   static final pages = [
     GetPage(
-        name: Routes.HOME,
-        page: () => HomePage(),
-        binding: SchoolPlannerBind()),
+      name: Routes.HOME,
+      page: () => HomePage(),
+      binding: SchoolPlannerBind(),
+    ),
     GetPage(
-        name: Routes.COURSE_DETAILS,
-        page: () => CourseDetailsPage(),
-        binding: SchoolPlannerBind()),
+      name: Routes.COURSE_DETAILS,
+      page: () => CourseDetailsPage(),
+      binding: SchoolPlannerBind(),
+    ),
   ];
 }
