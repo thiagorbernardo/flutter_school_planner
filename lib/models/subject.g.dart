@@ -21,13 +21,14 @@ class SubjectAdapter extends TypeAdapter<Subject> {
       name: fields[1] as String,
       professor: fields[2] as String,
       periodicity: (fields[4] as List).cast<WeekDay>(),
-    )..day = fields[5] as DateTime;
+      id: fields[0] as String,
+    );
   }
 
   @override
   void write(BinaryWriter writer, Subject obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -37,9 +38,7 @@ class SubjectAdapter extends TypeAdapter<Subject> {
       ..writeByte(3)
       ..write(obj.backgroundImage)
       ..writeByte(4)
-      ..write(obj.periodicity)
-      ..writeByte(5)
-      ..write(obj.day);
+      ..write(obj.periodicity);
   }
 
   @override

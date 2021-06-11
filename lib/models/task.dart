@@ -36,7 +36,7 @@ List<String> monthsAbr = [
 @HiveType(typeId: 2)
 class Task {
   @HiveField(0)
-  final String id = Uuid().v4();
+  String id;
   @HiveField(1)
   String name;
   @HiveField(2)
@@ -44,7 +44,11 @@ class Task {
   @HiveField(3)
   String? subjectId;
 
-  Task({required this.name, required this.date, this.subjectId});
+  Task(
+      {required this.name,
+      required this.date,
+      this.subjectId,
+      required this.id});
 
   String getDate() {
     return '${this._wrapInZero(this.date.day)}, ${monthsAbr[this.date.month - 1]}';
