@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:school_planner/components/elevated_button.dart';
+import 'package:uuid/uuid.dart';
 import 'package:weekday_selector/weekday_selector.dart';
 
 import 'package:school_planner/components/bottom_sheet.dart';
@@ -22,12 +23,14 @@ class InputSubject extends GetView<InputController> {
   void _onSubmit(BuildContext context) {
     this.schoolController.addSubject(
           Subject(
-            backgroundImage: controller.userHasSelectedImage ? controller.image : null,
+            backgroundImage:
+                controller.userHasSelectedImage ? controller.image : null,
             name: controller
                 .subjectState.currentState!.fields['subjectName']!.value,
             professor: controller
                 .subjectState.currentState!.fields['professorName']!.value,
             periodicity: controller.getSelectedWeekDays(),
+            id: Uuid().v4(),
           ),
         );
     Navigator.pop(context);

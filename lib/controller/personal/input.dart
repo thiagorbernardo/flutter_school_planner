@@ -45,8 +45,7 @@ class InputController extends GetxController {
   void checkInputSubjectValidations() {
     bool stateIsNull = this.subjectState.currentState?.validate() == null;
     if (!stateIsNull)
-      this.isCreateSubjectButtonEnabled =
-          subjectState.currentState!.validate();
+      this.isCreateSubjectButtonEnabled = subjectState.currentState!.validate();
 
     this.update();
   }

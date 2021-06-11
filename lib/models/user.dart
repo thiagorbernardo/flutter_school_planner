@@ -20,5 +20,9 @@ class User {
     // Task(name: 'Prova de Química E-302222', date: DateTime.now())
   ];
 
-  User({required this.name});
+  bool initialized = false;
+
+  User({
+    required this.name,
+  });
 }

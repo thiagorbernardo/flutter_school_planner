@@ -11,6 +11,7 @@ import 'package:school_planner/controller/personal/controller.dart';
 import 'package:school_planner/controller/personal/input.dart';
 import 'package:school_planner/models/task.dart';
 import 'package:school_planner/theme/app_theme.dart';
+import 'package:uuid/uuid.dart';
 
 class InputTask extends GetView<InputController> {
   final SchoolController schoolController;
@@ -20,12 +21,12 @@ class InputTask extends GetView<InputController> {
   void _onSubmit(BuildContext context) {
     this.schoolController.addTask(
           Task(
-              name:
-                  controller.taskState.currentState!.fields['taskName']!.value,
-              date:
-                  controller.taskState.currentState!.fields['taskDate']!.value,
-              subjectId: controller
-                  .taskState.currentState!.fields['subjectsTaskChoice']!.value),
+            name: controller.taskState.currentState!.fields['taskName']!.value,
+            date: controller.taskState.currentState!.fields['taskDate']!.value,
+            subjectId: controller
+                .taskState.currentState!.fields['subjectsTaskChoice']!.value,
+            id: Uuid().v4(),
+          ),
         );
     Navigator.pop(context);
   }
@@ -80,7 +81,6 @@ class InputTask extends GetView<InputController> {
                       allowClear: true,
                       items: schoolController.getUserSubjects().map(
                         (e) {
-                          print(e);
                           return DropdownMenuItem(
                             value: e.id,
                             child: Text(e.name),
