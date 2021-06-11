@@ -7,7 +7,6 @@ import 'package:school_planner/components/input_task.dart';
 import 'package:school_planner/components/list_item.dart';
 import 'package:school_planner/controller/personal/controller.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:school_planner/models/task.dart';
 
 class FancyFab extends GetView<SchoolController> {
   @override
