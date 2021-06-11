@@ -14,7 +14,7 @@ class InputController extends GetxController {
   bool isTaskSubjectButtonEnabled = false;
   bool userHasSelectedImage = false;
 
-  late File image;
+  String? image;
   final picker = ImagePicker();
 
   TimeOfDay firstSelectedTIme = TimeOfDay.now();
@@ -33,7 +33,7 @@ class InputController extends GetxController {
     final pickedFile = await this.picker.getImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
-      this.image = File(pickedFile.path);
+      this.image = pickedFile.path;
       this.userHasSelectedImage = true;
 
       this.checkInputSubjectValidations();

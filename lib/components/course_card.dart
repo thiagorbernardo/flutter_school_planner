@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +35,7 @@ class CourseCardWidget extends StatelessWidget {
             children: [
               subject.backgroundImage != null
                   ? Image.file(
-                      subject.backgroundImage!,
+                      File(subject.backgroundImage!),
                       width: double.infinity,
                       height: 120,
                       fit: BoxFit.cover,

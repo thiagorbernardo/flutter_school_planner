@@ -17,7 +17,7 @@ class SubjectAdapter extends TypeAdapter<Subject> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Subject(
-      backgroundImage: fields[3] as File?,
+      backgroundImage: fields[3] as String?,
       name: fields[1] as String,
       professor: fields[2] as String,
       periodicity: (fields[4] as List).cast<WeekDay>(),

@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:hive/hive.dart';
 
 import 'package:school_planner/models/weekday.dart';
-import 'package:uuid/uuid.dart';
 
 part 'subject.g.dart';
 
@@ -15,7 +14,7 @@ class Subject {
   @HiveField(2)
   String professor;
   @HiveField(3)
-  File? backgroundImage;
+  String? backgroundImage;
   @HiveField(4)
   List<WeekDay> periodicity;
 
