@@ -1,18 +1,17 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
+
 import 'package:school_planner/components/bottom_navigator.dart';
 import 'package:school_planner/components/fancy_fab.dart';
 import 'package:school_planner/components/lottie.dart';
 import 'package:school_planner/controller/personal/controller.dart';
-import 'package:lottie/lottie.dart';
 
 import '../components/course_card.dart';
 import '../components/custom_task.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
+
 
 class HomePage extends GetView<SchoolController> {
   Widget getTasksWidgets() {

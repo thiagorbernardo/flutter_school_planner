@@ -25,4 +25,13 @@ class User {
   User({
     required this.name,
   });
+
+  List<Task> getCurrentTasks() {
+    return this
+        .tasks
+        .where((el) =>
+            el.date.millisecondsSinceEpoch >
+            DateTime.now().millisecondsSinceEpoch)
+        .toList();
+  }
 }
