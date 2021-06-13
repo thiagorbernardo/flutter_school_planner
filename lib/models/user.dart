@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:school_planner/models/subject.dart';
 import 'package:school_planner/models/task.dart';
+import 'package:school_planner/utils/date/date.dart';
 import 'package:uuid/uuid.dart';
 
 part 'user.g.dart';
@@ -29,9 +30,7 @@ class User {
   List<Task> getCurrentTasks() {
     return this
         .tasks
-        .where((el) =>
-            el.date.millisecondsSinceEpoch >
-            DateTime.now().millisecondsSinceEpoch)
+        .where((el) => DateHelper.dateIsGreater(el.date, DateTime.now()))
         .toList();
   }
 }
