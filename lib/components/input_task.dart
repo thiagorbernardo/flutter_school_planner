@@ -63,7 +63,7 @@ class InputTask extends GetView<InputController> {
                       hint: 'Prova de Matemática, Atividade de Artes...',
                       label: 'Nome da tarefa',
                       onChanged: onTextValueChanged,
-                      onSubmitted: () => FocusScope.of(context).nextFocus(),
+                      isLastInput: true,
                     ),
                   ),
                   Padding(

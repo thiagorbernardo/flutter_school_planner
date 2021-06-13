@@ -8,23 +8,23 @@ class CustomInputTextField extends StatelessWidget {
   final String hint;
   final String label;
   final Function(String? value) onChanged;
-  final Function onSubmitted;
   final int? maxLength;
   final bool isName;
+  final bool isLastInput;
 
   CustomInputTextField(
       {required this.fieldName,
       required this.hint,
       required this.label,
       required this.onChanged,
-      required this.onSubmitted,
       this.maxLength,
-      this.isName = false});
+      this.isName = false,
+      this.isLastInput = false});
 
   @override
   Widget build(BuildContext context) {
-    // final node = FocusScope.of(context);
     return FormBuilderTextField(
+      textInputAction: this.isLastInput ? TextInputAction.done : TextInputAction.next,
       name: this.fieldName,
       maxLength: this.maxLength != null ? this.maxLength : 25,
       validator: FormBuilderValidators.compose([
@@ -37,12 +37,6 @@ class CustomInputTextField extends StatelessWidget {
       textCapitalization:
           this.isName ? TextCapitalization.words : TextCapitalization.sentences,
       onChanged: (value) => this.onChanged(value),
-      // onSubmitted: (_) {
-      //   // onSubmitted();
-      //   print("finish");
-
-      //   // print(node.hasFocus);
-      // },
       decoration: InputDecoration(
         hintText: this.hint,
         hintStyle: inputHintStyle,

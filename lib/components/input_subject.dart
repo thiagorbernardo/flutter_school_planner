@@ -44,6 +44,8 @@ class InputSubject extends GetView<InputController> {
     }
 
     void _onWeekDaySelected(int day) async {
+      FocusScope.of(context).unfocus();
+
       await controller.toggleWeekDay(day, context);
 
       controller.checkInputSubjectValidations();
@@ -69,7 +71,6 @@ class InputSubject extends GetView<InputController> {
                       hint: 'Matemática, Física, História...',
                       label: 'Nome da matéria',
                       onChanged: onValueChanged,
-                      onSubmitted: () => FocusScope.of(context).nextFocus(),
                       maxLength: 55,
                     ),
                   ),
@@ -80,7 +81,7 @@ class InputSubject extends GetView<InputController> {
                       hint: 'Thiago...',
                       label: 'Nome do professor',
                       onChanged: onValueChanged,
-                      onSubmitted: () => FocusScope.of(context).nextFocus(),
+                      isLastInput: true,
                       isName: true,
                     ),
                   ),
@@ -90,7 +91,11 @@ class InputSubject extends GetView<InputController> {
                       icon: FaIcon(controller.userHasSelectedImage
                           ? FontAwesomeIcons.check
                           : FontAwesomeIcons.solidImages),
-                      onPressed: () => controller.getImage(),
+                      onPressed: () {
+                        FocusScope.of(context).unfocus();
+
+                        controller.getImage();
+                      },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all(1),
                         backgroundColor:
@@ -122,9 +127,7 @@ class InputSubject extends GetView<InputController> {
                   Padding(
                     padding: EdgeInsets.only(top: 8),
                     child: WeekdaySelector(
-                      onChanged: (day) {
-                        _onWeekDaySelected(day);
-                      },
+                      onChanged: (day) => _onWeekDaySelected(day),
                       elevation: 2,
                       selectedFillColor: shrinePink100,
                       values: controller.getWeekDaysValues(),
