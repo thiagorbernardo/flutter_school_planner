@@ -32,5 +32,4 @@ jobs:
       - run: flutter test
 
       # Runs a set of commands using the runners shell
-      - name: Finish
-        run: echo Going Live.
+      - run: echo "🚀 This job's status is ${{ job.status }}."
