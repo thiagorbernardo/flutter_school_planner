@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart' as path;
 
 import 'package:school_planner/models/subject.dart';
 import 'package:school_planner/models/task.dart';
@@ -10,9 +9,7 @@ import 'package:school_planner/models/weekday.dart';
 
 class LocalDatabase {
   static Future initDb() async {
-    var dir = await path.getApplicationDocumentsDirectory();
-    print(dir.path);
-    Hive.init(dir.path);
+    await Hive.initFlutter();
 
     Hive.registerAdapter(UserAdapter());
     Hive.registerAdapter(SubjectAdapter());

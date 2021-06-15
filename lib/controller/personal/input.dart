@@ -20,19 +20,20 @@ class InputController extends GetxController {
   TimeOfDay firstSelectedTIme = TimeOfDay.now();
 
   List<WeekDay> weekDays = [
-    WeekDay('Domingo', DateTime.sunday), // Sunday
-    WeekDay('Segunda', DateTime.monday), // Monday
-    WeekDay('Terça', DateTime.tuesday), // Tuesday
-    WeekDay('Quarta', DateTime.wednesday), // Wednesday
-    WeekDay('Quinta', DateTime.thursday), // Thursday
-    WeekDay('Sexta', DateTime.friday), // Friday
-    WeekDay('Sábado', DateTime.saturday), // Saturday
+    WeekDay('Domingo', DateTime.sunday),
+    WeekDay('Segunda', DateTime.monday),
+    WeekDay('Terça', DateTime.tuesday),
+    WeekDay('Quarta', DateTime.wednesday),
+    WeekDay('Quinta', DateTime.thursday),
+    WeekDay('Sexta', DateTime.friday),
+    WeekDay('Sábado', DateTime.saturday),
   ];
 
   Future getImage() async {
     final pickedFile = await this.picker.getImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
+      //TODO: Checar quando a imagem é apagada
       this.image = pickedFile.path;
       this.userHasSelectedImage = true;
 

@@ -1,13 +1,8 @@
-import 'dart:io';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:school_planner/controller/local_database.dart';
 import 'package:school_planner/models/subject.dart';
 import 'package:school_planner/models/task.dart';
 import 'package:school_planner/models/user.dart';
-import 'package:school_planner/models/weekday.dart';
 
 class SchoolController extends GetxController {
   LocalDatabase localDatabase = new LocalDatabase();
@@ -36,18 +31,18 @@ class SchoolController extends GetxController {
   }
 
   String getHowManyTasks() {
-    if (this.user.tasks.length == 1)
+    List<Task> currentTasks = this.user.getCurrentTasks();
+    if (currentTasks.length == 1)
       return 'Próxima tarefa';
-    else if (this.user.tasks.length <= 3)
-      return 'Próximas ${this.user.tasks.length} tarefas';
+    else if (currentTasks.length <= 3)
+      return 'Próximas ${currentTasks.length} tarefas';
     else
       return 'Próximas 3 tarefas';
   }
 
   List<Task> getThreeTasks() {
-    return this.user.tasks.length > 3
-        ? this.user.tasks.sublist(0, 3)
-        : this.user.tasks;
+    List<Task> currentTasks = this.user.getCurrentTasks();
+    return currentTasks.length > 3 ? currentTasks.sublist(0, 3) : currentTasks;
   }
 
   void addSubject(Subject subject) async {
@@ -76,11 +71,7 @@ class SchoolController extends GetxController {
     return this.user.subjects;
   }
 
-  List<Task> getUserTasks() {
-    return this.user.tasks;
-  }
-
   bool isSubjectsEmpty() => this.user.subjects.isEmpty;
 
-  bool isTasksEmpty() => this.user.tasks.isEmpty;
+  bool isTasksEmpty() => this.user.getCurrentTasks().isEmpty;
 }

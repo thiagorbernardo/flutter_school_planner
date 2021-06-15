@@ -8,7 +8,7 @@ class WeekDay {
   @HiveField(0)
   bool isSelected = false;
   @HiveField(1)
-  late TimeOfDay occurrence; //TODO: is going fail here
+  late TimeOfDay occurrence;
   @HiveField(2)
   String dayName;
   @HiveField(3)
