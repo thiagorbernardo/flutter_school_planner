@@ -42,9 +42,7 @@ class SchoolController extends GetxController {
 
   List<Task> getThreeTasks() {
     List<Task> currentTasks = this.user.getCurrentTasks();
-    return currentTasks.length > 3
-        ? currentTasks.sublist(0, 3)
-        : currentTasks;
+    return currentTasks.length > 3 ? currentTasks.sublist(0, 3) : currentTasks;
   }
 
   void addSubject(Subject subject) async {

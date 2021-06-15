@@ -24,7 +24,8 @@ class CustomInputTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
-      textInputAction: this.isLastInput ? TextInputAction.done : TextInputAction.next,
+      textInputAction:
+          this.isLastInput ? TextInputAction.done : TextInputAction.next,
       name: this.fieldName,
       maxLength: this.maxLength != null ? this.maxLength : 25,
       validator: FormBuilderValidators.compose([

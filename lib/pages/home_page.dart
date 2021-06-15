@@ -12,7 +12,6 @@ import 'package:school_planner/controller/personal/controller.dart';
 import '../components/course_card.dart';
 import '../components/custom_task.dart';
 
-
 class HomePage extends GetView<SchoolController> {
   Widget getTasksWidgets() {
     return GetBuilder<SchoolController>(
