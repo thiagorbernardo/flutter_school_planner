@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -29,7 +28,7 @@ class InputController extends GetxController {
     WeekDay('Sábado', DateTime.saturday),
   ];
 
-  Future getImage() async {
+  Future<void> getImage() async {
     final pickedFile = await this.picker.getImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
