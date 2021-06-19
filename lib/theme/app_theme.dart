@@ -97,3 +97,24 @@ InputDecoration standardInputDecoration(String label) => InputDecoration(
       focusedBorder: inputTextBorderStyle,
       border: inputTextBorderStyle,
     );
+
+BorderRadius cardBorderRadius = BorderRadius.circular(20);
+
+// Screens
+
+TextStyle screenTitle = GoogleFonts.aBeeZee(
+  fontSize: 18,
+  letterSpacing: 1.5,
+  fontWeight: FontWeight.w500,
+);
+
+TextStyle screenText = GoogleFonts.aBeeZee(
+  fontSize: 15,
+  letterSpacing: 1.2,
+);
+
+TextStyle heading2 = GoogleFonts.aBeeZee(
+  fontSize: 16,
+  letterSpacing: 1.4,
+  fontWeight: FontWeight.w500,
+);
