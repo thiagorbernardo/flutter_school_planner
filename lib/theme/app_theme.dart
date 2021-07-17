@@ -103,13 +103,13 @@ BorderRadius cardBorderRadius = BorderRadius.circular(20);
 // Screens
 
 TextStyle screenTitle = GoogleFonts.aBeeZee(
-  fontSize: 18,
+  fontSize: 26,
   letterSpacing: 1.5,
   fontWeight: FontWeight.w500,
 );
 
 TextStyle screenText = GoogleFonts.aBeeZee(
-  fontSize: 15,
+  fontSize: 16,
   letterSpacing: 1.2,
 );
 

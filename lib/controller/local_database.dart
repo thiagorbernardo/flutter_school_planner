@@ -38,7 +38,7 @@ class LocalDatabase {
 
       if (getUser != null) return getUser;
     }
-    return new User(name: 'Daniela');
+    return new User(name: 'Thiago');
   }
 
   Future<bool> isUSerCreated(String key) async {
