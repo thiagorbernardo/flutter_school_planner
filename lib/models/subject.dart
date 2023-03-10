@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:hive/hive.dart';
 
 import 'package:school_planner/models/weekday.dart';

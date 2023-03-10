@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_planner/controller/personal/controller.dart';
-import 'package:school_planner/theme/app_theme.dart';
 
 class CustomBottomSheet extends GetView<SchoolController> {
   final List<Widget> items;

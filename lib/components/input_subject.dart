@@ -26,9 +26,9 @@ class InputSubject extends GetView<InputController> {
             backgroundImage:
                 controller.userHasSelectedImage ? controller.image : null,
             name: controller
-                .subjectState.currentState!.fields['subjectName']!.value,
+                .subjectState.currentState!.fields['subjectName']!.value as String,
             professor: controller
-                .subjectState.currentState!.fields['professorName']!.value,
+                .subjectState.currentState!.fields['professorName']!.value as String,
             periodicity: controller.getSelectedWeekDays(),
             id: Uuid().v4(),
           ),

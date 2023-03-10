@@ -8,7 +8,7 @@ import 'package:school_planner/models/user.dart';
 import 'package:school_planner/models/weekday.dart';
 
 class LocalDatabase {
-  static Future initDb() async {
+  static Future<void> initDb() async {
     await Hive.initFlutter();
 
     Hive.registerAdapter(UserAdapter());
@@ -18,29 +18,31 @@ class LocalDatabase {
     Hive.registerAdapter(TimeOfDayAdapter());
   }
 
-  Future<Box> getUserBox(String boxName) async {
+  Future<Box<User>> getUserBox(String boxName) async {
     return Hive.isBoxOpen(boxName)
         ? Hive.box<User>(boxName)
         : await Hive.openBox<User>(boxName);
   }
 
-  Future saveUser(String key, User user) async {
-    Box box = await this.getUserBox('User');
+  Future<void> saveUser(String key, User user) async {
+    Box<User> box = await this.getUserBox('User');
 
     await box.put(key, user);
   }
 
   Future<User> getUser(String key) async {
     if (await this.isUSerCreated(key)) {
-      Box box = await this.getUserBox('User');
+      Box<User> box = await this.getUserBox('User');
 
-      return await box.get(key);
+      User? getUser = await box.get(key);
+
+      if (getUser != null) return getUser;
     }
-    return new User(name: 'Daniela');
+    return new User(name: 'Thiago');
   }
 
   Future<bool> isUSerCreated(String key) async {
-    Box box = await this.getUserBox('User');
+    Box<User> box = await this.getUserBox('User');
 
     return box.isEmpty
         ? false
@@ -49,5 +51,5 @@ class LocalDatabase {
             : false;
   }
 
-  Future deleteAll() async => await Hive.deleteBoxFromDisk('User');
+  Future<void> deleteAll() async => await Hive.deleteBoxFromDisk('User');
 }

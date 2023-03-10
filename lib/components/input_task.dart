@@ -21,10 +21,10 @@ class InputTask extends GetView<InputController> {
   void _onSubmit(BuildContext context) {
     this.schoolController.addTask(
           Task(
-            name: controller.taskState.currentState!.fields['taskName']!.value,
-            date: controller.taskState.currentState!.fields['taskDate']!.value,
+            name: controller.taskState.currentState!.fields['taskName']!.value as String,
+            date: controller.taskState.currentState!.fields['taskDate']!.value as DateTime,
             subjectId: controller
-                .taskState.currentState!.fields['subjectsTaskChoice']!.value,
+                .taskState.currentState!.fields['subjectsTaskChoice']!.value as String?,
             id: Uuid().v4(),
           ),
         );

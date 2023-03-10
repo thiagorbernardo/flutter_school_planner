@@ -33,4 +33,7 @@ class User {
         .where((el) => DateHelper.dateIsGreater(el.date, DateTime.now()))
         .toList();
   }
+
+  Subject getSubjectById(String id) =>
+      this.subjects.firstWhere((el) => el.id == id);
 }

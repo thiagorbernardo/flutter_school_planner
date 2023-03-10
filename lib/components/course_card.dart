@@ -16,9 +16,9 @@ class CourseCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        await Get.toNamed('/course-details');
+        await Get.toNamed('/course-details/${subject.id}');
       },
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: cardBorderRadius,
       child: Container(
         width: 300,
         height: 280,
